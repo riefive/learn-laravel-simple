@@ -9,6 +9,8 @@
     {{ $slot }}
 </div>
 
+{{ $attributes }}
+
 <footer {{ $footer->attributes->class(['text-gray-700']) }}>
     {{ $footer }}
 </footer>

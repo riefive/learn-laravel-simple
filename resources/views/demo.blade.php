@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="py-5">
-        <x-alert-custom>
+        <x-alert-custom type="error" class="mt-4">
             <x-slot:title>
                 Server Error
             </x-slot>
