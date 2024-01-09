@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SampleClientController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +33,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/demo-query', [SampleController::class, 'displayQuery'])->name('demo-query');
 
-Route::get('/demo', [SampleController::class, 'create'])->name('demo');
+Route::get('/demo-client', [SampleClientController::class, 'getPost'])->name('demo-client');
+
+Route::get('/demo-form', [SampleController::class, 'create'])->name('demo-form');
 
 Route::post('/demo-testing', [SampleController::class, 'store'])->name('demo-testing');
 
