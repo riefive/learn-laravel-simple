@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\FormSampleController;
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // with raw query
-    // $users = DB::select('select * from users');
-    // $users = DB::select('select * from users where email=?', ['rie.five@gmail.com']);
-    // with query builder
-    // $users = DB::table('users')->get();
-    // $users = DB::table('users')->where('email', 'rie.five@gmail.com')->get();
-    // display result
-    // dd($users);
     return view('welcome');
 });
 
@@ -38,8 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/demo', [FormSampleController::class, 'create'])->name('demo');
+Route::get('/demo-query', [SampleController::class, 'displayQuery'])->name('demo-query');
 
-Route::post('/demo-testing', [FormSampleController::class, 'store'])->name('demo-testing');
+Route::get('/demo', [SampleController::class, 'create'])->name('demo');
+
+Route::post('/demo-testing', [SampleController::class, 'store'])->name('demo-testing');
 
 require __DIR__.'/auth.php';
